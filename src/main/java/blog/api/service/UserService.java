@@ -18,6 +18,7 @@ public class UserService {
         return userRepository.save(user);  
     }
 
+    @SuppressWarnings("deprecation")
     public User findUserByID(Long id) {
         return userRepository.getById(id);
     }

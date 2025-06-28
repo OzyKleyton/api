@@ -22,23 +22,24 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
+    public ResponseEntity<User> saveUser(@RequestBody User user) throws Exception {
+
         User savedUser = userService.createUser(user);
-
         return ResponseEntity.ok(savedUser);
-    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> findUserByIdUser(@PathVariable String id) {
-        Long userId = Long.parseLong(id);
-
-        User  user = userService.findUserByID(userId);
-        return ResponseEntity.ok(user);
     }
 
     @GetMapping
     public ResponseEntity<List<User>> findUsers() {
         List<User> users = userService.findAllUsers();
         return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> findUserByIdUser(@PathVariable String id) {
+        Long userId = Long.parseLong(id);
+
+        User user = userService.findUserByID(userId);
+        return ResponseEntity.ok(user);
     }
 }
