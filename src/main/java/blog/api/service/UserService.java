@@ -3,6 +3,7 @@ package blog.api.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import blog.api.model.User;
@@ -18,12 +19,21 @@ public class UserService {
         return userRepository.save(user);  
     }
 
-    @SuppressWarnings("deprecation")
-    public User findUserByID(Long id) {
-        return userRepository.getById(id);
-    }
-
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
+
+    public User findUserByID(Long id) {
+        return userRepository.findById(id).get();
+    }
+
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        User userId = userRepository.findById(id).get();
+        userRepository.delete(userId);
+    }
+
 }
