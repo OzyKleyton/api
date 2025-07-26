@@ -22,12 +22,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", length = 15, nullable = false)
+    @Column(name = "username",  nullable = false)
     private String username;    
 
-    @Column(name = "email", length = 30, nullable = false)
+    @Column(name = "email",nullable = false)
     private String email;
 
-     @Column(name = "password", length = 15, nullable = false)
+     @Column(name = "password", nullable = false)
     private String password;
 }
